@@ -15,14 +15,7 @@ use Inertia\Inertia;
 
 
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 
 
 Route::get('/r/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
